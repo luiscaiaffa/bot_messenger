@@ -53,8 +53,11 @@ def post_facebook_message(senderid, message):
 		answer = "Você dizia..."
 		search_results_question = watson.filter(IA, message, ranking=True)
 		if search_results_question:
+			distinct = []
 			for result in search_results_question:
-				answer += "%s " %(result.question)
+				if not result.question in distinct:
+					answer += "%s " %(result.question)
+				distinct.append(result.question)
 		else:
 			find = False
 			answer = "Não entendi muito bem o que você disse %s, contribua com perguntas e repostas acessando nosso Website" %(user_details['first_name'])
