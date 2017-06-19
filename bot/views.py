@@ -52,7 +52,6 @@ def post_facebook_message(senderid, message):
 	else:
 		answer = "Você dizia..."
 		search_results_question = watson.filter(IA, message, ranking=True)
-		search_results_question = search_results_question.values('question').distinct()
 		if search_results_question:
 			for result in search_results_question:
 				answer += "%s " %(result.question)
