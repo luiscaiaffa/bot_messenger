@@ -45,8 +45,10 @@ def post_facebook_message(senderid, message):
 	user , created = UserFacebook.objects.get_or_create(sender_id=senderid);
 	search_results = watson.filter(IA.objects.filter(question__iexact=message), message, ranking=False)
 	
-	if len(search_results) == 1:
-		answer = search_results[0].answer
+	if search_results:
+		secure_random = random.SystemRandom()
+		secure_random = secure_random.choice(search_results)
+		answer = secure_random.answer
 	else:
 		answer = "Você dizia..."
 		search_results_question = watson.filter(IA, message, ranking=True)
