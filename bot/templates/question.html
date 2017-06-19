@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <a data-toggle="popover" title="Hello =)" data-content="How are you?" href="#" class="lang-logo">
+      <img src="{% static 'img/logo.png'%}">
+    </a>
+    <h1>Hello, I’m Catita Bot</h1>
+    {% if success %}
+    <h3>Thank you for your contributions</h3>
+    {% endif %}
+
+    <dib class="row">
+    	<div class="col-md-12">
+			<form class="form-question" autocomplete="off" method="post" enctype="multipart/form-data" role="form"> 
+			  {% csrf_token %}
+			  <div class="form-group">
+			    {{ form.question }}
+			  </div>
+			  <div class="form-group">
+			    {{ form.answer }}
+			  </div>
+			  <button type="submit" class="btn btn-default btn-question">Save</button>
+			</form>
+		</div>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+function popover(){
+  $('.lang-logo').popover('show');
+}
+setTimeout(popover, 1000);
+</script>
+{% endblock %}

@@ -32,6 +32,20 @@
     max-width: 100%
 }
 
+.popover-title {
+    color:#000000;
+}
+
+.popover-content {
+    color:#000000;
+}
+
 body {
     background: #532f8c;
+}
+
+.btn-question {
+    border:#fff;
+    border-radius: 0;
+    color:#9b9b9b;
 }
